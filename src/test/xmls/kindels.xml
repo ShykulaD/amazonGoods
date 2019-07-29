@@ -5,7 +5,7 @@
 
     <test name="Kindle test">
         <classes>
-            <class name="kindle.KindleDevices"> </class>
+            <class name="kindles.KindleDevices"></class>
         </classes>
     </test>
 
