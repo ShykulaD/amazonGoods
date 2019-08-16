@@ -1,21 +1,26 @@
 package pages;
 
+import com.sun.xml.internal.rngom.parse.host.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
+import wrappers.BaseWrapper;
 
 /**
  * Created by ShykulaD on 03/08/2019.
  */
 
 
-public class UsualKindlePage {
+public class UsualKindlePage extends BaseWrapper {
 
+    public UsualKindlePage(WebDriver driver) {
+        super(driver);
+    }
 
      String new1 = "[\"New\"]";
     // ChromeDriver driver = new ChromeDriver();
-    public WebDriver driver;
+     public WebDriver driver;
    private String[] kindleList = new String[]{"https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc"};
