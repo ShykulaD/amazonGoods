@@ -12,15 +12,8 @@ import wrappers.BaseWrapper;
  */
 
 
-public class UsualKindlePage extends BaseWrapper {
+public class UsualKindlePage extends BaseWrapper{
 
-    public UsualKindlePage(WebDriver driver) {
-        super(driver);
-    }
-
-     String new1 = "[\"New\"]";
-    // ChromeDriver driver = new ChromeDriver();
-     public WebDriver driver;
    private String[] kindleList = new String[]{"https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc"};

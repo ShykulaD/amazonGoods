@@ -21,10 +21,6 @@ public class KindleDevices extends BaseWrapper {
     private By applyUSAZip = By.xpath("//input[@aria-labelledby='GLUXZipUpdate-announce']");
     private By continueUSAZip = By.xpath("//*[@class='a-popover-footer']//input");
 
-    public KindleDevices(WebDriver driver) {
-        super(driver);
-    }
-
     @BeforeTest
     public void configureAmazon() throws InterruptedException {
         driver.get("https://www.amazon.com/");
@@ -37,10 +33,9 @@ public class KindleDevices extends BaseWrapper {
         Thread.sleep(4000);
     }
 
-
     @Test
     public void BaseTest() {
-        UsualKindlePage usualKindlePage = new UsualKindlePage(driver);
+        UsualKindlePage usualKindlePage = new UsualKindlePage();
         usualKindlePage.getUsualKindel();
 
         KindlePaperWhitePage kindlePaperWhitePage = new KindlePaperWhitePage();

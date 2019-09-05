@@ -8,13 +8,9 @@ import org.testng.annotations.BeforeTest;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class BaseWrapper {
+public class BaseWrapper {
 
-    protected WebDriver driver;
-
-    public BaseWrapper(WebDriver driver) {
-        this.driver = driver;
-    }
+    public WebDriver driver;
 
     @BeforeTest
     public void setUp() {
