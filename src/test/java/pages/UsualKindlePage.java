@@ -18,8 +18,8 @@ public class UsualKindlePage extends BasePage {
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc");
 
-    private By kindlePrice = By.xpath("//span[@id='priceblock_ourprice' and " +
-            "@class='a-size-medium a-color-price priceBlockBuyingPriceString']");
+    private By kindlePrice = By.xpath("//span[@id='priceblock_ourprice']");
+
 
     @Test
     public void getUsualKindel() {
