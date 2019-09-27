@@ -4,22 +4,25 @@ import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import wrappers.BasePage;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by ShykulaD on 03/08/2019.
  */
 
 public class KindleOasisPage extends BasePage {
 
-    private String[] kindleList = new String[]{"https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
+    List<String> kindleList = Arrays.asList("https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
-            "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc"};
+            "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc");
 
     private By kindlePrice = By.xpath("//span[@id='priceblock_ourprice' and @class='a-size-medium a-color-price priceBlockBuyingPriceString']");
 
     @Test
     public void getOasisWhitePrice() {
 
-        driver.get(kindleList[2]);
+        driver.get(kindleList.get(2));
         String parseKindleOasisPrice = driver.findElement(kindlePrice).getText();
         parseKindleOasisPrice = parseKindleOasisPrice.replaceAll("[$]", "").trim();
         double kindleOasisPriceInINT = Double.parseDouble(parseKindleOasisPrice);
