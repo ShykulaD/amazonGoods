@@ -1,14 +1,12 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 import wrappers.BasePage;
 
 /**
  * Created by ShykulaD on 03/08/2019.
  */
-
 
 public class KindlePaperWhitePage extends BasePage {
 
@@ -28,11 +26,11 @@ public class KindlePaperWhitePage extends BasePage {
         System.out.println("KindlePaperWhite price is " + kindlePaperWhitePriceInINT);
 
         if (Double.valueOf(kindlePaperWhitePriceInINT) == 129.99) {
-            System.out.println("KindlePaperWhite price didn't change");
+            System.out.println("KindlePaperWhite price didn't change \n");
         } else if (kindlePaperWhitePriceInINT >= 130) {
-            System.out.println("KindlePaperWhite price is bigger than regular price");
+            System.out.println("KindlePaperWhite price is bigger than regular price \n");
         } else if (kindlePaperWhitePriceInINT <= 129.98) {
-            System.out.println("KindlePaperWhite price is lower than regular price! Time to buy");
+            System.out.println("KindlePaperWhite price is lower than regular price! Time to buy \n");
         }
 
     }
