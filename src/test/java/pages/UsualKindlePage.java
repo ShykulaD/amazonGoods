@@ -1,18 +1,16 @@
 package pages;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-import wrappers.BaseWrapper;
+import wrappers.BasePage;
 
 /**
  * Created by ShykulaD on 03/08/2019.
  */
 
 
-public class UsualKindlePage extends BaseWrapper{
+public class UsualKindlePage extends BasePage {
 
    private String[] kindleList = new String[]{"https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
@@ -23,7 +21,7 @@ public class UsualKindlePage extends BaseWrapper{
 
     @Test
     public void getUsualKindel() {
-        driver.get("https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc");
+        driver.get(kindleList[0]);
 
         String parseUsualKindlePrice = driver.findElement(kindlePrice).getText();
         parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();

@@ -3,16 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-import wrappers.BaseWrapper;
+import wrappers.BasePage;
 
 /**
  * Created by ShykulaD on 03/08/2019.
  */
 
 
-public class KindlePaperWhitePage {
-
-    public WebDriver driver;
+public class KindlePaperWhitePage extends BasePage {
 
     private String[] kindleList = new String[]{"https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
