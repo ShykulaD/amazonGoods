@@ -1,41 +1,18 @@
-package kindles;
+package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.Kindels;
 import wrappers.BasePage;
 
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
- * Created by Shykulad on 28/07/2019.
+ * Created by ShykulaD on 03/10/2019.
  */
-public class KindleDevices extends BasePage {
-
-    private By changeUserLocation = By.xpath("//input[@data-action-type='SELECT_LOCATION']");
-    private By enterUSAZip = By.xpath("//input[@class='GLUX_Full_Width a-declarative']");
-    private By applyUSAZip = By.xpath("//input[@aria-labelledby='GLUXZipUpdate-announce']");
-    private By continueUSAZip = By.xpath("//*[@class='a-popover-footer']//input");
-
-    @BeforeClass
-    public void configureAmazon() throws InterruptedException {
-        driver.get("https://www.amazon.com/");
-        WebDriverWait explicitWait = new WebDriverWait(driver, 10);
-        explicitWait.until(ExpectedConditions.presenceOfElementLocated(changeUserLocation));
-        driver.findElement(changeUserLocation).click();
-        driver.findElement(enterUSAZip).sendKeys("10001");
-        driver.findElement(applyUSAZip).click();
-        driver.findElement(continueUSAZip).click();
-        Thread.sleep(4000);
-    }
-
+public class Kindels extends BasePage {
     List<String> kindleList = Arrays.asList("https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc");
@@ -43,7 +20,7 @@ public class KindleDevices extends BasePage {
     private By kindlePrice = By.xpath("//span[@id='priceblock_ourprice']");
 
 
-    @Test
+    @Test (alwaysRun = true)
     public void getUsualKindel() {
         driver.get(kindleList.get(0));
 
@@ -55,7 +32,7 @@ public class KindleDevices extends BasePage {
 
         try {
             SoftAssert soft = new SoftAssert();
-            Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindel price didn't change");
+                 Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindel price didn't change");
         } catch (Exception e) {
             System.out.println("Usual Kindle price changed");
             System.out.println("Now Usual Kindel price is " + kindleUsualPriceInDouble);
@@ -63,7 +40,7 @@ public class KindleDevices extends BasePage {
         }
     }
 
-    @Test
+    @Test (alwaysRun = true)
     public void getPaperWhitePrice() {
         driver.get(kindleList.get((1)));
 
@@ -82,7 +59,7 @@ public class KindleDevices extends BasePage {
 
     }
 
-    @Test
+    @Test (alwaysRun = true)
     public void getOasisWhitePrice() {
 
         driver.get(kindleList.get(2));

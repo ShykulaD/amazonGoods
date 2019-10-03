@@ -1,10 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import wrappers.BasePage;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,16 +27,25 @@ public class UsualKindlePage extends BasePage {
 
         String parseUsualKindlePrice = driver.findElement(kindlePrice).getText();
         parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();
-        double kindleUsualPriceInINT = Double.parseDouble(parseUsualKindlePrice);
-        System.out.println("Usual Kindel price is " + kindleUsualPriceInINT);
+        double kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePrice);
+        System.out.println("Usual Kindel price is " + kindleUsualPriceInDouble);
+        kindleUsualPriceInDouble = 90.99;
 
-        if (Double.valueOf(kindleUsualPriceInINT) == 89.99) {
-            System.out.println("Usual Kindel price didn't change \n");
-        } else if (kindleUsualPriceInINT >= 90) {
-            System.out.println("Usual Kindel price is bigger than regular price \n");
-        } else if (kindleUsualPriceInINT <= 89.98) {
-            System.out.println("Usual Kindel price is lower than regular price! Time to buy \n");
+        try {
+            Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindel price didn't change");
+        } catch (Exception e) {
+            System.out.println("Usual Kindle price changed");
+            System.out.println("Now Usual Kindel price is " + kindleUsualPriceInDouble);
+
         }
+
+//        if (Double.valueOf(kindleUsualPriceInDouble) == 89.99) {
+//            System.out.println("Usual Kindel price didn't change \n");
+//        } else if (kindleUsualPriceInDouble >= 90) {
+//            System.out.println("Usual Kindel price is bigger than regular price \n");
+//        } else if (kindleUsualPriceInDouble <= 89.98) {
+//            System.out.println("Usual Kindel price is lower than regular price! Time to buy \n");
+//        }
 
     }
 }

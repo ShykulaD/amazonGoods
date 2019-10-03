@@ -5,7 +5,13 @@
 
     <test name="Kindle test">
         <classes>
-            <class name="kindles.KindleDevices"></class>
+            <class name="kindles.KindleDevices">
+                <methods>
+                    <include name="getUsualKindel"/>
+                    <include name="getPaperWhitePrice"/>
+                    <include name="getOasisWhitePrice"/>
+                </methods>
+            </class>
         </classes>
     </test>
 
