@@ -47,7 +47,6 @@ public class KindleDevices extends BasePage {
         parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();
         double kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePrice);
         System.out.println("Usual Kindel price is " + kindleUsualPriceInDouble);
-        kindleUsualPriceInDouble = 99923929392.232;
 
         try {
             Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindel CHANGED!!!");
