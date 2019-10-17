@@ -4,7 +4,7 @@ package test_pack;
  * Created by ShykulaD on 05/09/2019.
  */
 
-public class Test {
+public class SwitchCaseTest {
     public static void main(String[] args) {
         Seasons arg = Seasons.FALL;
 
