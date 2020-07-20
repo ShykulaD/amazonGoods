@@ -1,5 +1,6 @@
 package pages;
 
+import com.sun.javafx.binding.Logging;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,11 +9,12 @@ import wrappers.BasePage;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Created by ShykulaD on 03/10/2019.
  */
-public class Kindels extends BasePage {
+public class Kindles extends BasePage {
     List<String> kindleList = Arrays.asList("https://www.amazon.com/dp/B07DLPWYB7?ref=ods_ucc_eink_kindle_nrc_ucc",
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc");
@@ -20,25 +22,28 @@ public class Kindels extends BasePage {
     private By usualKindlePrice = By.cssSelector("#priceblock_ourprice");
     private By dealKindlePrice = By.cssSelector("#priceblock_dealprice");
 
-
     @Test (alwaysRun = true)
-    public void getUsualKindel() {
+    public void getUsualKindle() {
+        double kindleUsualPriceInDouble = 0;
         driver.get(kindleList.get(0));
 
-        String parseUsualKindlePrice = driver.findElement(usualKindlePrice).getText();
-        parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();
-        double kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePrice);
-        System.out.println("Usual Kindel price is " + kindleUsualPriceInDouble);
-        kindleUsualPriceInDouble = 90.99;
+         try {
+             String parseUsualKindlePrice = driver.findElement(usualKindlePrice).getText();
+             parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();
+             kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePrice);
+             System.out.println("Usual Kindle price is " + kindleUsualPriceInDouble);
+             kindleUsualPriceInDouble = 90.99;
+             SoftAssert soft = new SoftAssert();
+             Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindle price didn't change");
+         } catch (NoSuchElementException exception) {
+             System.out.println("Usual Kindle price changed");
+             System.out.println("Now Usual Kindle price is " + kindleUsualPriceInDouble);
+             String parseUsualKindlePriceNew = driver.findElement(dealKindlePrice).getText();
+             parseUsualKindlePriceNew = parseUsualKindlePriceNew.replaceAll("[$]", "").trim();
+             kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePriceNew);
+             System.out.println("Usual Kindle price is " + kindleUsualPriceInDouble);
+         }
 
-        try {
-            SoftAssert soft = new SoftAssert();
-                 Assert.assertEquals(kindleUsualPriceInDouble, 89.99, "Usual Kindel price didn't change");
-        } catch (Exception e) {
-            System.out.println("Usual Kindle price changed");
-            System.out.println("Now Usual Kindel price is " + kindleUsualPriceInDouble);
-
-        }
     }
 
     @Test (alwaysRun = true)
