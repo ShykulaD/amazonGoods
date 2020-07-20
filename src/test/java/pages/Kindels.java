@@ -17,14 +17,15 @@ public class Kindels extends BasePage {
             "https://www.amazon.com/dp/B07CXG6C9W?ref=ods_ucc_eink_pprwhite_nrc_ucc",
             "https://www.amazon.com/dp/B07F7TLZF4?ref=ods_ucc_eink_oasis_nrc_ucc");
 
-    private By kindlePrice = By.xpath("//span[@id='priceblock_ourprice']");
+    private By usualKindlePrice = By.cssSelector("#priceblock_ourprice");
+    private By dealKindlePrice = By.cssSelector("#priceblock_dealprice");
 
 
     @Test (alwaysRun = true)
     public void getUsualKindel() {
         driver.get(kindleList.get(0));
 
-        String parseUsualKindlePrice = driver.findElement(kindlePrice).getText();
+        String parseUsualKindlePrice = driver.findElement(usualKindlePrice).getText();
         parseUsualKindlePrice = parseUsualKindlePrice.replaceAll("[$]", "").trim();
         double kindleUsualPriceInDouble = Double.parseDouble(parseUsualKindlePrice);
         System.out.println("Usual Kindel price is " + kindleUsualPriceInDouble);
@@ -44,7 +45,7 @@ public class Kindels extends BasePage {
     public void getPaperWhitePrice() {
         driver.get(kindleList.get((1)));
 
-        String parseKindlePrice = driver.findElement(kindlePrice).getText();
+        String parseKindlePrice = driver.findElement(usualKindlePrice).getText();
         parseKindlePrice = parseKindlePrice.replaceAll("[$]", "").trim();
         double kindlePaperWhitePriceInINT = Double.parseDouble(parseKindlePrice);
         System.out.println("KindlePaperWhite price is " + kindlePaperWhitePriceInINT);
@@ -63,7 +64,7 @@ public class Kindels extends BasePage {
     public void getOasisWhitePrice() {
 
         driver.get(kindleList.get(2));
-        String parseKindleOasisPrice = driver.findElement(kindlePrice).getText();
+        String parseKindleOasisPrice = driver.findElement(usualKindlePrice).getText();
         parseKindleOasisPrice = parseKindleOasisPrice.replaceAll("[$]", "").trim();
         double kindleOasisPriceInINT = Double.parseDouble(parseKindleOasisPrice);
         System.out.println("KindleOasis price is " + kindleOasisPriceInINT);
